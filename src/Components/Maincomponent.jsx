@@ -12,7 +12,8 @@ class Maincomponent extends React.Component {
             <Container>
                 <Row>
                 <ClaimComponent></ClaimComponent>
-                <SingleDish></SingleDish>
+                {/* <SingleDish></SingleDish> */}
+        {Menu.map((menuItem,index)=><SingleDish dish={menuItem} key={index}/>)}   
                 </Row>  
             </Container>
                
