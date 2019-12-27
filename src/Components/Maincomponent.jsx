@@ -8,12 +8,20 @@ import DishDetails from "./DishDetails"
 
 class Maincomponent extends React.Component {
     state = { 
-        selectedDish:undefined
+        selectedDish:undefined,
+        searchString:""
      }
     selectDish=(dish)=>{
         // console.log(dish)
 this.setState({
     selectedDish:dish
+})
+    }
+
+    searchItem=(ev)=>{
+// console.log(ev.target.value)
+this.setState({
+    searchString:ev.target.value.toLowerCase()
 })
     }
     render() { 
@@ -23,8 +31,9 @@ this.setState({
                 <Row>
                 <ClaimComponent></ClaimComponent>
                 {/* <SingleDish></SingleDish> */}
+                <input type="text" onChange={this.searchItem} value={this.state.searchString} />
                 <SimpleComponent></SimpleComponent>
-        {Menu.map((menuItem,index)=><SingleDish dish={menuItem} key={index} onSelectedDish={this.selectDish}/>)}   
+        {Menu.filter(dish=>dish.name.toLowerCase().indexOf(this.state.searchString)>=0 || dish.description.toLowerCase().indexOf(this.state.searchString)>=0).map((menuItem,index)=><SingleDish dish={menuItem} key={index} onSelectedDish={this.selectDish}/>)}   
         {/* <DishDetails dishName={Menu[0]}></DishDetails> */}
   {this.state.selectedDish && <DishDetails selectedDish={this.state.selectedDish}></DishDetails>}      
 
