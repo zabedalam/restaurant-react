@@ -17,6 +17,9 @@ class DishDetails extends React.Component {
         <h2>{dish.description}</h2>
         <h2>Label :{dish.label}</h2>
         <h2>Price :{dish.price}</h2>
+        <ul>
+        {dish.comments.map((comment,k)=><li key={k}>{comment.rating} | {comment.comment} by {comment.author}</li>)}  
+        </ul>
 
 </Col>
 
