@@ -3,6 +3,7 @@ import {Container,Row} from "reactstrap"
 import ClaimComponent from "./ClainComponent"
 import SingleDish from "./SingleDish"
 import Menu from "../data/menu.json"
+import SimpleComponent from "./SimpleComponent"
 
 class Maincomponent extends React.Component {
     state = {  }
@@ -13,6 +14,7 @@ class Maincomponent extends React.Component {
                 <Row>
                 <ClaimComponent></ClaimComponent>
                 {/* <SingleDish></SingleDish> */}
+                <SimpleComponent></SimpleComponent>
         {Menu.map((menuItem,index)=><SingleDish dish={menuItem} key={index}/>)}   
                 </Row>  
             </Container>
