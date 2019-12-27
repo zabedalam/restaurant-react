@@ -5,7 +5,7 @@ class DishDetails extends React.Component {
     state = {  }
     
     render() { 
-        let dish=this.props.dishName
+        let dish=this.props.selectedDish
         return ( 
             <Container className="mt-5">
                 <Row>

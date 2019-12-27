@@ -5,10 +5,14 @@ import {Media} from "reactstrap"
 
 class SingleDish extends React.Component {
     state = {  }
+    elementSelect=()=>{
+      this.props.onSelectedDish(this.props.dish)
+// console.log(this.props)
+    }
     render() { 
         console.log(this.props)
         return ( 
-            <Media>
+            <Media onClick={this.elementSelect}>
             <Media left href="#">
               <Media object src={this.props.dish.image} alt="Generic placeholder image" />
             </Media>

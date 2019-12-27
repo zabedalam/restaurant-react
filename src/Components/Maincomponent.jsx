@@ -7,7 +7,15 @@ import SimpleComponent from "./SimpleComponent"
 import DishDetails from "./DishDetails"
 
 class Maincomponent extends React.Component {
-    state = {  }
+    state = { 
+        selectedDish:undefined
+     }
+    selectDish=(dish)=>{
+        // console.log(dish)
+this.setState({
+    selectedDish:dish
+})
+    }
     render() { 
         console.log(Menu)
         return ( 
@@ -16,8 +24,10 @@ class Maincomponent extends React.Component {
                 <ClaimComponent></ClaimComponent>
                 {/* <SingleDish></SingleDish> */}
                 <SimpleComponent></SimpleComponent>
-        {Menu.map((menuItem,index)=><SingleDish dish={menuItem} key={index}/>)}   
-        <DishDetails dishName={Menu[0]}></DishDetails>
+        {Menu.map((menuItem,index)=><SingleDish dish={menuItem} key={index} onSelectedDish={this.selectDish}/>)}   
+        {/* <DishDetails dishName={Menu[0]}></DishDetails> */}
+  {this.state.selectedDish && <DishDetails selectedDish={this.state.selectedDish}></DishDetails>}      
+
                 </Row>  
             </Container>
                
