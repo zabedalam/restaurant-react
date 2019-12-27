@@ -4,6 +4,7 @@ import ClaimComponent from "./ClainComponent"
 import SingleDish from "./SingleDish"
 import Menu from "../data/menu.json"
 import SimpleComponent from "./SimpleComponent"
+import DishDetails from "./DishDetails"
 
 class Maincomponent extends React.Component {
     state = {  }
@@ -16,6 +17,7 @@ class Maincomponent extends React.Component {
                 {/* <SingleDish></SingleDish> */}
                 <SimpleComponent></SimpleComponent>
         {Menu.map((menuItem,index)=><SingleDish dish={menuItem} key={index}/>)}   
+        <DishDetails dishName={Menu[0]}></DishDetails>
                 </Row>  
             </Container>
                
