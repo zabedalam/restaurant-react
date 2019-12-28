@@ -57,7 +57,7 @@ class ReservationComponent extends React.Component {
       </FormGroup>
       <FormGroup className="col-md-6">
         <Label for="numberOfPersons">Person</Label>
-        <Input type="select"  id="numberofPersons" placeholder="give number of persons" 
+        <Input type="select"  id="numberOfPersons" placeholder="give number of persons" 
         value={this.state.reservation.numberOfPersons} onChange={this.handleInput} >
             <option>1</option>
             <option>2</option>
