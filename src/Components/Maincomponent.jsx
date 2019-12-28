@@ -5,6 +5,7 @@ import SingleDish from "./SingleDish"
 import Menu from "../data/menu.json"
 import SimpleComponent from "./SimpleComponent"
 import DishDetails from "./DishDetails"
+import ReservationComponent from "./ReservationComponent"
 
 class Maincomponent extends React.Component {
     state = { 
@@ -30,6 +31,7 @@ this.setState({
             <Container>
                 <Row>
                 <ClaimComponent></ClaimComponent>
+                <ReservationComponent></ReservationComponent>
                 {/* <SingleDish></SingleDish> */}
                 <input type="text" onChange={this.searchItem} value={this.state.searchString} />
                 <SimpleComponent></SimpleComponent>
