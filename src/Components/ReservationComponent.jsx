@@ -61,6 +61,14 @@ this.setState({
   message:"Reservaton OK!See you soon",
   isLoading:false
 })
+setTimeout(
+  function() {
+    this.setState({
+      message: undefined
+    });
+  }.bind(this),
+  3000
+);
 }
 else{
   this.setState({
@@ -69,6 +77,14 @@ else{
     errorMessage:"There is a problem!Please try again or contact @42166754"
 
   })
+  setTimeout(
+    function() {
+      this.setState({
+        errorMessage: undefined
+      });
+    }.bind(this),
+    3000
+  );
 }
       }
       catch{
@@ -78,6 +94,14 @@ else{
           errorMessage:"There is a problem!Please try again or contact @42166754"
       
         })
+        setTimeout(
+          function() {
+            this.setState({
+              errorMessage: undefined
+            });
+          }.bind(this),
+          3000
+        );
       }
     }
     render() { 
