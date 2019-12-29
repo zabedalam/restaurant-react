@@ -10,7 +10,9 @@ class ReservationComponent extends React.Component {
                 smoking: false,
                 dateTime: "",
                 specialRequests: ""
-              }
+              },
+              message: undefined,
+              errorMessage: undefined,
         
      }
      handleInput=(ev)=>{
@@ -29,6 +31,36 @@ class ReservationComponent extends React.Component {
          this.setState({
              reservation:reservation 
      })
+    }
+
+    saveReservation=async()=>{
+let response=await fetch("https://strive-school-testing-apis.herokuapp.com/api/reservation",
+{
+          method: "POST",
+          body: JSON.stringify(this.state.reservation),
+          headers: {
+            "Content-Type": "application/json"
+          }
+})
+if(response.ok){
+this.setState({
+  reservation: {
+    name: "",
+    phone: "",
+    numberOfPersons: 1,
+    smoking: false,
+    dateTime: "",
+    specialRequests: ""
+  },
+  message:"Reservaton OK!See you soon"
+})
+}
+else{
+  this.setState({
+    errorMessage:"There is a problem!Please try again or contact @42166754"
+
+  })
+}
     }
     render() { 
         return ( 
@@ -98,7 +130,7 @@ class ReservationComponent extends React.Component {
                 </Row>
                 <Row>
                 <FormGroup className="col-md-12">
-                <Button >
+                <Button onClick={this.saveReservation}>
                   Submit Reservation
                 </Button>
               </FormGroup>
