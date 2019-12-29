@@ -1,5 +1,5 @@
 import React from "react"
-import {Container,Row,Col,FormGroup,Form,Input,Button,Label} from "reactstrap"
+import {Container,Row,Col,FormGroup,Form,Input,Button,Label,Alert,Spinner} from "reactstrap"
 class ReservationComponent extends React.Component {
     state = { 
         
@@ -13,6 +13,7 @@ class ReservationComponent extends React.Component {
               },
               message: undefined,
               errorMessage: undefined,
+              isLoading:false
         
      }
      handleInput=(ev)=>{
@@ -34,6 +35,10 @@ class ReservationComponent extends React.Component {
     }
 
     saveReservation=async()=>{
+      this.setState({
+        isLoading:true
+      })
+      try{
 let response=await fetch("https://strive-school-testing-apis.herokuapp.com/api/reservation",
 {
           method: "POST",
@@ -52,15 +57,28 @@ this.setState({
     dateTime: "",
     specialRequests: ""
   },
-  message:"Reservaton OK!See you soon"
+  errorMessage:undefined,
+  message:"Reservaton OK!See you soon",
+  isLoading:false
 })
 }
 else{
   this.setState({
+    isLoading:false,
+    message:undefined,
     errorMessage:"There is a problem!Please try again or contact @42166754"
 
   })
 }
+      }
+      catch{
+        this.setState({
+          isLoading:false,
+          message:undefined,
+          errorMessage:"There is a problem!Please try again or contact @42166754"
+      
+        })
+      }
     }
     render() { 
         return ( 
@@ -135,7 +153,17 @@ else{
                 </Button>
               </FormGroup>
                 </Row>
-                
+                <Row>
+                  <FormGroup className="col-md-12">
+               {this.state.isLoading && <Spinner color="primary" />}
+            { this.state.message &&   <Alert color="success">
+        {this.state.message}
+      </Alert>}
+     {this.state.errorMessage && <Alert color="danger">
+        {this.state.errorMessage}
+      </Alert>}
+                  </FormGroup>
+                </Row>
             </Container>
          );
     }
