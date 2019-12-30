@@ -30,14 +30,16 @@ this.setState({
         return ( 
             <Container>
                 <Row>
-                <ClaimComponent></ClaimComponent>
+                <ClaimComponent menuItems={Menu} onSelectedDish={this.selectDish}></ClaimComponent>
+                {this.state.selectedDish && <DishDetails selectedDish={this.state.selectedDish}></DishDetails>}      
+
                 <ReservationComponent></ReservationComponent>
                 {/* <SingleDish></SingleDish> */}
                 <input type="text" onChange={this.searchItem} value={this.state.searchString} />
                 <SimpleComponent></SimpleComponent>
         {Menu.filter(dish=>dish.name.toLowerCase().indexOf(this.state.searchString)>=0 || dish.description.toLowerCase().indexOf(this.state.searchString)>=0).map((menuItem,index)=><SingleDish dish={menuItem} key={index} onSelectedDish={this.selectDish}/>)}   
         {/* <DishDetails dishName={Menu[0]}></DishDetails> */}
-  {this.state.selectedDish && <DishDetails selectedDish={this.state.selectedDish}></DishDetails>}      
+  {/* {this.state.selectedDish && <DishDetails selectedDish={this.state.selectedDish}></DishDetails>}       */}
 
                 </Row>  
             </Container>
