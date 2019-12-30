@@ -1,5 +1,6 @@
 import React from "react"
 import {Container,Row,Col,FormGroup,Form,Input,Button,Label,Alert,Spinner} from "reactstrap"
+import ShowReservation from "./ShowReservation"
 class ReservationComponent extends React.Component {
     state = { 
         
@@ -188,6 +189,7 @@ else{
       </Alert>}
                   </FormGroup>
                 </Row>
+                <ShowReservation></ShowReservation>
             </Container>
          );
     }
